@@ -1,4 +1,5 @@
-const WelcomeView = ({userName, setUserName, gameState, setGameState}) => {
+import "../rps.css";
+const WelcomeView = ({ userName, setUserName, gameState, setGameState }) => {
   return (
     <div id="welcome-screen">
       <form id="name-form">

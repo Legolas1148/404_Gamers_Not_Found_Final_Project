@@ -15,7 +15,7 @@ function Rps() {
   
   return (
     <div className="container">
-      <h1 className="mainHeader">Rock Paper Scissors in React</h1>
+      <h2 className="mainHeader">Rock Paper Scissors in React</h2>
       {
         gameState.gameStart
         ?<GameView userName = {userName} gameState = {gameState} setGameState = {setGameState}/>

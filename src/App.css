@@ -1,8 +1,11 @@
 #root {
   max-width: 1280px;
+  width:950px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  max-height:1000px;
+  height:600px;
 }
 
 body{
