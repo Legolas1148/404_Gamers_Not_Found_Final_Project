@@ -1,0 +1,29 @@
+nav{
+    color:navy;
+    width:660px;
+    border-bottom: 2px solid indigo;
+
+
+}
+    nav > ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    nav > li {
+
+
+    }
+
+    nav > a{
+        padding:5px;
+    }
+
+
+a:hover{
+    background-color:indigo;
+    color:goldenrod;
+}

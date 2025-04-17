@@ -1,8 +1,10 @@
-function Homepage(){
+import "../styling/home.css";
+function Homepage() {
   return (
-    <div>
+    <div class="homeContent">
       <h1>Welcome to the Homepage</h1>
-      <p>This is the main page of our application.</p>
+          <p>Made by Opal, Niteesh and Caitlin</p>
+      <p>404 - GamersNotFound</p>
     </div>
   );
 }
