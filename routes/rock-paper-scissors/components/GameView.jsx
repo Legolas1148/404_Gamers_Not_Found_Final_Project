@@ -1,5 +1,6 @@
 import {RockPaperScissors} from "../RpsClass";
 import { useState } from 'react';
+import "../rps.css";
 
 const GameView = ({userName, gameState, setGameState}) => {
   const [rps] = useState(new RockPaperScissors(userName));
