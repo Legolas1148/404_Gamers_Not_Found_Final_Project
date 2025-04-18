@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from '../routes/HomePage';
 import Rps from '../routes/rock-paper-scissors/rps';
 import TicTacToeGame from '../routes/tic-tac-toe/TicTacToe';
-import Nonogram from '../routes/nonogram/nonogram';
+import Nonogram from '../routes/nonogram/Nonogram';
 import '../styling/nav.css'; 
 
 function navigation(){
