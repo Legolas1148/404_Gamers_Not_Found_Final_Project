@@ -9,6 +9,7 @@ export class nonogramClass{
         this.clueRows = this.generateClueRows(this.solutionBoard);
         this.clueCols = this.generateClueCols(this.solutionBoard);
         this.FilledCells = 0;
+        console.log(this.solutionBoard);
     }
 
     generateSolutionBoard(size) {
@@ -26,24 +27,20 @@ export class nonogramClass{
 
     generateClueRows(board) {
         const clues = [];
-        
-        for(let i = 0; i < board.length; i++)
-        {
+
+        for (let i = 0; i < board.length; i++) {
             let clueMark = 0;
-            let clueString = "";
-            for(let j = 0; j < board[i].length; j++)
-            {
-                if (board[i][j] === 1) 
-                {
+            const rowClues = [];
+            for (let j = 0; j < board[i].length; j++) {
+                if (board[i][j] === 1) {
                     clueMark++;
-                } 
-                else if (board[i][j] === 0 && clueMark > 0) 
-                {
-                    clues.push(clueMark.toString() + " ");
+                } else if (clueMark > 0) {
+                    rowClues.push(clueMark);
                     clueMark = 0;
                 }
             }
-            clues.push(clueString.trim());
+            if (clueMark > 0) rowClues.push(clueMark);
+            clues.push(rowClues.join(" "));
         }
 
         return clues;
@@ -51,110 +48,45 @@ export class nonogramClass{
 
     generateClueCols(board) {
         const clues = [];
-        
-        for(let j = 0; j < board.length; j++)
-        {
+
+        for (let j = 0; j < board.length; j++) {
             let clueMark = 0;
-            let clueString = "";
-            for(let i = 0; i < board[j].length; i++)
-            {
-                if (board[i][j] === 1) 
-                {
+            const colClues = [];
+            for (let i = 0; i < board.length; i++) {
+                if (board[i][j] === 1) {
                     clueMark++;
-                } 
-                else if (board[i][j] === 0 && clueMark > 0) 
-                {
-                    clues.push(clueMark.toString() + " ");
+                } else if (clueMark > 0) {
+                    colClues.push(clueMark);
                     clueMark = 0;
                 }
             }
-            clues.push(clueString.trim());
+            if (clueMark > 0) colClues.push(clueMark);
+            clues.push(colClues.join(" "));
         }
 
         return clues;
     }
 
-    determineFilledRow(row)
-    {
-        let completeRow = 0;
-        for(let i = 0; i < this.size; i++)
-        {
-            if(1 === this.solutionBoard[row][i])
-            {
-                completeRow++;
+    determineFilledRow(row) {
+        for (let i = 0; i < this.size; i++) {
+            if (this.board[row][i] === 1) {   
+                if (this.board[row][i] !== this.solutionBoard[row][i]) {
+                    return false;
+                }   
             }
         }
-
-        for(let i = 0; i < this.size; i++)
-        {
-            if(this.board[row][i] === 2 || this.board[row][i] === 0)
-            {
-                continue;
-            }
-            else if(this.board[row][i] === 1 && this.solutionBoard[row][i] === 1)
-            {
-                completeRow--;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        if(completeRow === 0)
-        {
-            for(let i = 0; i < this.size; i++)
-            {
-                this.board [row][i] = this.solutionBoard[row][i];
-            }
-            return true;
-            
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
 
-    determineFilledCol(col)
-    {
-        let completeCol = 0;
-        for(let i = 0; i < this.size; i++)
-        {
-            if(1 === this.solutionBoard[i][col])
-            {
-                completeCol++;
+    determineFilledCol(col) {
+        for (let i = 0; i < this.size; i++) {
+            if( this.board[i][col] === 1) {
+                if (this.board[i][col] !== this.solutionBoard[i][col]) {
+                    return false;
+                }
             }
         }
-
-        for(let i = 0; i < this.size; i++)
-        {
-            if(this.board[i][col] === 2 || this.board[i][col] === 0)
-            {
-                continue;
-            }
-            else if(this.board[i][col] === 1 && this.solutionBoard[i][col] === 1)
-            {
-                completeCol--;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        if(completeCol === 0)
-        {
-            for(let i = 0; i < this.size; i++)
-            {
-                this.board [i][col] = this.solutionBoard[i][col];
-            }
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
 
     determineWin()

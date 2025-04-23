@@ -33,16 +33,16 @@ function renderGameBoard({ gameState, setGameState }, gameController) {
       </div>
       {gameState.gameBoard.map((row, rowIndex) => (
         <div className="game-row" key={`game-row-${rowIndex}`}>
-          <div className="row-clue-cell" key={`clue-row-${rowIndex}`}>
-            {gameController.clueRows[rowIndex]}
-          </div>
+          <div className="row-clue-cell">{gameController.clueRows[rowIndex]}</div>
           {row.map((cell, cellIndex) => (
             <div
               className="game-cell"
               key={`game-cell-${rowIndex}-${cellIndex}`}
-              onClick={() => handleCellClick(rowIndex, cellIndex, gameController, gameState, setGameState)}
+              onClick={() =>
+                handleCellClick(rowIndex, cellIndex, gameController, gameState, setGameState)
+              }
             >
-              {cell}
+              {renderCellContent(cell)}
             </div>
           ))}
         </div>
@@ -51,38 +51,50 @@ function renderGameBoard({ gameState, setGameState }, gameController) {
   );
 }
 
+function renderCellContent(cell) {
+  switch (cell) {
+    case 0:
+      return ""; // Empty cell
+    case 1:
+      return "●"; // Filled cell
+    case 2:
+      return "X"; // Crossed cell
+    default:
+      return "";
+  }
+}
+
 function handleCellClick(rowIndex, cellIndex, gameController, gameState, setGameState) {
-  // Update the board based on the control
-  const updatedBoard = [...gameController.board];
-  updatedBoard[rowIndex][cellIndex] = gameState.control;
+  // Create a deep copy of the board
+  const updatedBoard = gameState.gameBoard.map((row) => [...row]);
+
+  // Update the cell based on the current control
+  updatedBoard[rowIndex][cellIndex] = gameState.setControl;
+
+  // Check for row completion
+  if (gameController.determineFilledRow(rowIndex)) {
+    for (let i = 0; i < gameController.size; i++) {
+      updatedBoard[rowIndex][i] = gameController.solutionBoard[rowIndex][i];
+    }
+  }
+
+  // Check for column completion
+  if (gameController.determineFilledCol(cellIndex)) {
+    for (let i = 0; i < gameController.size; i++) {
+      updatedBoard[i][cellIndex] = gameController.solutionBoard[i][cellIndex];
+    }
+  }
+
+  // Check for win condition
+  const gameWon = gameController.determineWin();
 
   // Update the game state
   setGameState((prevState) => ({
     ...prevState,
     gameBoard: updatedBoard,
+    gameOver: gameWon,
+    gameWon: gameWon,
   }));
-
-  // Check for row/column completion and win condition
-  if (gameController.determineFilledCol(cellIndex)) {
-    setGameState((prevState) => ({
-      ...prevState,
-      gameBoard: gameController.board,
-    }));
-  }
-  if (gameController.determineFilledRow(rowIndex)) {
-    setGameState((prevState) => ({
-      ...prevState,
-      gameBoard: gameController.board,
-    }));
-  }
-  if (gameController.determineWin()) {
-    setGameState((prevState) => ({
-      ...prevState,
-      gameBoard: gameController.board,
-      gameOver: true,
-      gameWon: true,
-    }));
-  }
 }
 
 export default GameBoard;

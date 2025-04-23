@@ -2,6 +2,7 @@ import GameBoard from './components/GameBoard.jsx';
 import GameControls from './components/GameControls.jsx';
 import WelcomeScreen from './components/WelcomeScreen.jsx';
 import { useState } from 'react';
+import './Nonogram.css';
 
 function Nonogram()
 {
