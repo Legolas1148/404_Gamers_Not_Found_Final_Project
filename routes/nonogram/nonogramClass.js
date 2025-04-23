@@ -1,7 +1,7 @@
 export class nonogramClass{
     constructor(size) {
         this.size = size;
-        this.board;
+        this.board = new Array(size);
         for(let i = 0; i < size; i++){
             this.board[i] = new Array(size).fill(null).map(() => new Array(size).fill(0));
         }
@@ -45,6 +45,8 @@ export class nonogramClass{
             }
             clues.push(clueString.trim());
         }
+
+        return clues;
     }
 
     generateClueCols(board) {
@@ -68,6 +70,8 @@ export class nonogramClass{
             }
             clues.push(clueString.trim());
         }
+
+        return clues;
     }
 
     determineFilledRow(row)

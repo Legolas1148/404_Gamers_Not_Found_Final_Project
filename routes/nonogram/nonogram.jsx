@@ -26,14 +26,14 @@ function Nonogram()
             <div className="gameContainer">
                 {gameState.gameStart?
                 (
-                    <div>
-                    <GameBoard useState = {gameState} setGameState = {setGameState}></GameBoard>
-                    <GameControls useState = {gameState} setGameState = {setGameState}></GameControls>
-                    </div>
+                    <>
+                    <GameBoard gameState = {gameState} setGameState = {setGameState}></GameBoard>
+                    <GameControls gameState = {gameState} setGameState = {setGameState}></GameControls>
+                    </>
                 )   
                 :
                 (
-                    <WelcomeScreen useState = {gameState} setGameState = {setGameState}></WelcomeScreen>
+                    <WelcomeScreen gameState = {gameState} setGameState = {setGameState}></WelcomeScreen>
                 )
                 }
                 
