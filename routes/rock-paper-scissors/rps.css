@@ -1,36 +1,32 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-
-/*Welcome view Styling*/
-
-#name-form{
-    margin:10px;
-    padding:5px;
-}
-
-button{
-    margin:10px 25px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    }
+    
+    /*Welcome view Styling*/
+    #name-form {
+    margin: 10px;
+    padding: 5px;
+    }
+    
+    button {
+    margin: 10px 25px;
     box-shadow: 3px 2px 5px indigo;
-}
-
-h2{
-    text-decoration:underline double plum;
-
-}
-
-.form-group{
-    display:inline-block;
-}
-
-/*Game view styling*/
-
-ol.game-info{
+    }
+    
+    h2 {
+    text-decoration: underline double plum;
+    }
+    
+    .form-group {
+    display: inline-block;
+        }
+    
+    /*Game view styling*/
+    ol.game-info {
     list-style-type: none;
-    color:goldenrod;
+    color: goldenrod;
     border: 3px solid hotpink;
-}
+    }

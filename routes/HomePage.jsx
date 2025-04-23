@@ -3,9 +3,9 @@ function Homepage() {
   return (
 
     <div class="homeContent">
-      <h1>Welcome to the Homepage</h1>
-          <p>Made by Opal, Niteesh and Caitlin</p>
-      <p>404 - GamersNotFound</p>
+      <h1>Welcome to GameHub!</h1>
+          <p>Made by Opal Shah, Niteesh Rawal and Caitlin Reardon</p>
+      <p>404 Gamers Not Found</p>
     </div>
   );
 }
