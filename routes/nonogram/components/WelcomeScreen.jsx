@@ -1,3 +1,8 @@
+function createGameBoardArray(size) {
+    const board = new Array(size).fill(null).map(() => new Array(size).fill(0));
+    return board;
+}
+
 function WelcomeScreen({gameState, setGameState})
 {
     return (
@@ -17,7 +22,7 @@ function WelcomeScreen({gameState, setGameState})
                     {
                         e.preventDefault();
                         setGameState(
-                            gameState => ({...gameState, gameStart: true, boardSize: 5}));
+                            gameState => ({...gameState, gameStart: true, boardSize: 5, gameBoard : createGameBoardArray(5)}));
                     }
                 }>
                 5 X 5                            
@@ -26,7 +31,7 @@ function WelcomeScreen({gameState, setGameState})
                     {
                         e.preventDefault();
                         setGameState(
-                            gameState => ({...gameState, gameStart: true, boardSize: 10}));
+                            gameState => ({...gameState, gameStart: true, boardSize: 10, gameBoard : createGameBoardArray(10)}));
                     }
                 }>
                 10 X 10
@@ -35,7 +40,7 @@ function WelcomeScreen({gameState, setGameState})
                     {
                         e.preventDefault();
                         setGameState(
-                            gameState => ({...gameState, gameStart: true, boardSize: 15}));
+                            gameState => ({...gameState, gameStart: true, boardSize: 15, gameBoard : createGameBoardArray(15)}));
                     }
                 }>
                 15 X 15

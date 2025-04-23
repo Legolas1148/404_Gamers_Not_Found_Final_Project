@@ -10,6 +10,7 @@ function Nonogram()
             gameStart: false,
             userName: null,
             gameBoard: [[]],
+            gameSolution: [[]],
             boardSize: 0,
             gameOver: false,
             gameWon: false,
@@ -21,6 +22,7 @@ function Nonogram()
     return (
         <div className="nonogram">
             <h1 className="mainHeader">Nonogram</h1>
+            <h2 className="subHeader">Hello {gameState.userName}</h2>
             <div className="gameContainer">
                 {gameState.gameStart?
                 (
