@@ -1,0 +1,80 @@
+/* General styles for the game board */
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    border: 2px solid #333;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Styles for the clue rows and columns */
+  .game-clue-row,
+  .game-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ClueHeader {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Clue cells */
+  .col-clue-cell,
+  .row-clue-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Game cells */
+  .game-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Hover effect for game cells */
+  .game-cell:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Filled cell */
+  .game-cell.filled {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  /* Crossed cell */
+  .game-cell.crossed {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  /* Empty cell */
+  .game-cell.empty {
+    background-color: #fff;
+    color: #000;
+  }

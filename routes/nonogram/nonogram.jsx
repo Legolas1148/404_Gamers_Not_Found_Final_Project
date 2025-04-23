@@ -2,6 +2,7 @@ import GameBoard from './components/GameBoard.jsx';
 import GameControls from './components/GameControls.jsx';
 import WelcomeScreen from './components/WelcomeScreen.jsx';
 import { useState } from 'react';
+import './Nonogram.css';
 
 function Nonogram()
 {
@@ -26,14 +27,14 @@ function Nonogram()
             <div className="gameContainer">
                 {gameState.gameStart?
                 (
-                    <div>
-                    <GameBoard useState = {gameState} setGameState = {setGameState}></GameBoard>
-                    <GameControls useState = {gameState} setGameState = {setGameState}></GameControls>
-                    </div>
+                    <>
+                    <GameBoard gameState = {gameState} setGameState = {setGameState}></GameBoard>
+                    <GameControls gameState = {gameState} setGameState = {setGameState}></GameControls>
+                    </>
                 )   
                 :
                 (
-                    <WelcomeScreen useState = {gameState} setGameState = {setGameState}></WelcomeScreen>
+                    <WelcomeScreen gameState = {gameState} setGameState = {setGameState}></WelcomeScreen>
                 )
                 }
                 
