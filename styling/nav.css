@@ -24,6 +24,7 @@ nav{
 
 
 a:hover{
-    background-color:indigo;
-    color:goldenrod;
+    color:indigo;
+    text-shadow:1em 0.2em 0.5em goldenrod;
+    font-size:medium;
 }
