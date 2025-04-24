@@ -3,6 +3,7 @@ import HomePage from '../routes/HomePage';
 import Rps from '../routes/rock-paper-scissors/rps';
 import TicTacToeGame from '../routes/tic-tac-toe/TicTacToe';
 import Nonogram from '../routes/nonogram/Nonogram';
+import Hangman from '../routes/hangman/Hangman';
 import '../styling/nav.css'; 
 
 function navigation(){
@@ -14,6 +15,7 @@ function navigation(){
           <li><Link to="routes/rock-paper-scissors">Rock Paper Scissors</Link></li>
           <li><Link to="routes/tic-tac-toe">Tic Tac Toe</Link></li>
           <li><Link to="routes/nonogram">Nonogram</Link></li>
+          <li><Link to="routes/hangman">Hangman</Link></li>
         </ul>
       </nav>
       <Routes>
@@ -21,6 +23,7 @@ function navigation(){
         <Route path = "routes/rock-paper-scissors" element={<Rps/>}/>
         <Route path = "routes/tic-tac-toe" element={<TicTacToeGame/>}/>
         <Route path = "routes/nonogram" element={<Nonogram/>}/>
+        <Route path = "routes/hangman" element={<Hangman/>}/>
       </Routes>
     </Router>
     )
