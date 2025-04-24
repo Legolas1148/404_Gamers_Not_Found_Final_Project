@@ -50,7 +50,7 @@ const Wordle = () => {
   return (
     <div id="game">
       <Header />
-      <WordleGrid
+      <WordleGrid id="word"
         guesses={guesses}
         solution={solution}
         currentGuess={currentGuess}
