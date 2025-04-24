@@ -25,8 +25,21 @@
         }
     
     /*Game view styling*/
-    ol.game-info {
+    .game-info > ol {
     list-style-type: none;
-    color: goldenrod;
-    border: 3px solid hotpink;
     }
+.game-info {
+    display: flex;
+    font-size:small;
+    flex-direction:row;
+    flex-wrap:wrap;
+    height:400px;
+}
+.game-info:first-child{
+    font-size:medium;
+}
+
+.board-row > button{
+    height:50px;
+    width:50px;
+}
