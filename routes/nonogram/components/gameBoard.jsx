@@ -47,6 +47,7 @@ function renderGameBoard({ gameState, setGameState }, gameController) {
           ))}
         </div>
       ))}
+      {gameState.gameWon}?<h3>Congratulations! You Won</h3>:;
     </>
   );
 }
