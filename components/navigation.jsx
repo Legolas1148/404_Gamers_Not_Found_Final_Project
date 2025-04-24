@@ -4,6 +4,7 @@ import Rps from '../routes/rock-paper-scissors/rps';
 import TicTacToeGame from '../routes/tic-tac-toe/TicTacToe';
 import Nonogram from '../routes/nonogram/Nonogram';
 import Hangman from '../routes/hangman/Hangman';
+import Wordle from '../routes/wordle/Wordle';
 import '../styling/nav.css'; 
 
 function navigation(){
@@ -16,6 +17,7 @@ function navigation(){
           <li><Link to="routes/tic-tac-toe">Tic Tac Toe</Link></li>
           <li><Link to="routes/nonogram">Nonogram</Link></li>
           <li><Link to="routes/hangman">Hangman</Link></li>
+          <li><Link to="routes/wordle">Wordle</Link></li>
         </ul>
       </nav>
       <Routes>
@@ -24,6 +26,7 @@ function navigation(){
         <Route path = "routes/tic-tac-toe" element={<TicTacToeGame/>}/>
         <Route path = "routes/nonogram" element={<Nonogram/>}/>
         <Route path = "routes/hangman" element={<Hangman/>}/>
+        <Route path = "routes/wordle" element={<Wordle/>}/>
       </Routes>
     </Router>
     )
