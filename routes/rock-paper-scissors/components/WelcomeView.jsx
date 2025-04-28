@@ -17,35 +17,63 @@ const WelcomeView = ({ gameState, setGameState }) => {
   };
 
   const handleJoinRoom = async () => {
-    if (!roomInput.trim()) return;
-
+    if (!roomInput.trim()) {
+      alert("Please enter a Room ID.");
+      return;
+    }
+  
     try {
       const res = await fetch(`https://game-room-api.fly.dev/api/rooms/${roomInput.trim()}`);
       if (!res.ok) throw new Error("Room not found");
+  
+      const data = await res.json();
       setRoomId(roomInput.trim());
-      setGameState({ ...gameState, gameStart: true });
+      setGameState({
+        gameStart: true,
+        userChoice: null,
+        userScore: data.score?.user || 0,
+        cpuScore: data.score?.cpu || 0,
+        gameHistory: data.gameHistoryLog || [],
+      });
     } catch (err) {
-      alert("Room not found. Please check the ID or create a new one.");
+      alert("Room not found. Please check the Room ID or create a new one.");
+      console.error(err);
     }
   };
 
   const handleCreateRoom = async () => {
-    const res = await fetch("https://game-room-api.fly.dev/api/rooms", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        initialState: {
-          userName: userInput,
-          score: { user: 0, cpu: 0 },
-          gameHistoryLog: [],
-        },
-      }),
-    });
-    const data = await res.json();
-    setRoomId(data.roomId);
-    setGameState({ ...gameState, gameStart: true });
+    try {
+      const res = await fetch("https://game-room-api.fly.dev/api/rooms", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          initialState: {
+            userName: userInput,
+            score: { user: 0, cpu: 0 },
+            gameHistoryLog: [],
+          },
+        }),
+      });
+      const data = await res.json();
+      setRoomId(data.roomId);
+  
+      await navigator.clipboard.writeText(data.roomId);
+  
+      alert(`Room created! Your Room ID is: ${data.roomId} (copied to clipboard ✅)`);
+  
+      setGameState({
+        gameStart: true,
+        userChoice: null,
+        userScore: 0,
+        cpuScore: 0,
+        gameHistory: [],
+      });
+    } catch (error) {
+      alert("Error creating room. Please try again.");
+      console.error(error);
+    }
   };
-
+  
   return (
     <div id="welcome-screen">
       {step === 1 && (
@@ -70,14 +98,14 @@ const WelcomeView = ({ gameState, setGameState }) => {
 
       {step === 2 && (
         <div className="form-group">
-          <label htmlFor="roomid">Enter Room ID (if existing or create new room): </label>
+          <label htmlFor="roomid">Enter Room ID (leave blank to create new room): </label>
           <input
             value={roomInput}
             onChange={(e) => setRoomInput(e.target.value)}
             className="form-control"
             type="text"
             id="roomid"
-            placeholder="Room ID (blank if new)"
+            placeholder="Room ID (optional)"
           />
           <div>
             <button className="btn btn-success" onClick={handleJoinRoom}>

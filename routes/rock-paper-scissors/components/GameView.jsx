@@ -10,50 +10,25 @@ const GameView = ({ userName, roomId, gameState, setGameState }) => {
     setRps(new RockPaperScissors(userName));
   }, [userName]);
 
-  useEffect(() => {
-    if (roomId) {
-      fetch(`https://game-room-api.fly.dev/api/rooms/${roomId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const gameData = data.gameState;
-          setGameState({
-            ...gameState,
-            gameHistory: gameData.gameHistoryLog,
-            userScore: gameData.score.user,
-            cpuScore: gameData.score.cpu,
-          });
-        });
-    }
-  }, [roomId, setGameState]);
-
   const handlePlay = (userSelection) => {
     if (!rps) return;
 
     rps.play(userSelection);
 
-    setGameState({
-      ...gameState,
+    const updatedGameState = {
+      gameStart: true,
       userChoice: userSelection,
       userScore: rps.score.user,
       cpuScore: rps.score.cpu,
       gameHistory: rps.gameHistoryLog,
-    });
-
-    const updatedGameState = {
-      gameState: {
-        ...gameState,
-        userScore: rps.score.user,
-        cpuScore: rps.score.cpu,
-        gameHistoryLog: rps.gameHistoryLog,
-      },
     };
+
+    setGameState(updatedGameState);
 
     fetch(`https://game-room-api.fly.dev/api/rooms/${roomId}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedGameState),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ gameState: updatedGameState }),
     });
   };
 
@@ -79,15 +54,9 @@ const GameView = ({ userName, roomId, gameState, setGameState }) => {
         <div className="form-group">
           <label htmlFor="user-selection">Select your choice: </label>
           <select className="custom-select" id="user-selection" name="user-selection">
-            <option id="rock" value="rock">
-              Rock
-            </option>
-            <option id="paper" value="paper">
-              Paper
-            </option>
-            <option id="scissors" value="scissors">
-              Scissors
-            </option>
+            <option id="rock" value="rock">Rock</option>
+            <option id="paper" value="paper">Paper</option>
+            <option id="scissors" value="scissors">Scissors</option>
           </select>
         </div>
         <button
@@ -107,6 +76,7 @@ const GameView = ({ userName, roomId, gameState, setGameState }) => {
       <div id="game-history">
         <pre>{gameState.gameHistory.join("\n")}</pre>
       </div>
+      
       <button id="reset-game-button" className="btn btn-secondary" onClick={handleResetGame}>
         Reset
       </button>
