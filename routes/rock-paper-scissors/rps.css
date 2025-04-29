@@ -34,12 +34,24 @@
     flex-direction:row;
     flex-wrap:wrap;
     height:400px;
+    background-color:lavender;
 }
 .game-info:first-child{
     font-size:medium;
 }
 
-.board-row > button{
-    height:50px;
-    width:50px;
+button {
+    background-color: white;
+    border: 2px solid hotpink;
+    border-radius: 15px;
+    color: black;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+select{
+    color:black;
+    font-weight:bold;
 }

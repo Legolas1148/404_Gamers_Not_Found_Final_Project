@@ -5,9 +5,10 @@
     align-items: center;
     margin: 20px auto;
     border: 2px solid #333;
-    background-color: #f9f9f9;
+    background-color: lavender;
     padding: 10px;
     border-radius: 8px;
+
   }
   
   /* Styles for the clue rows and columns */
@@ -58,7 +59,8 @@
   
   /* Hover effect for game cells */
   .game-cell:hover {
-    background-color: #f0f0f0;
+    background-color: lightpink;
+
   }
   
   /* Filled cell */
