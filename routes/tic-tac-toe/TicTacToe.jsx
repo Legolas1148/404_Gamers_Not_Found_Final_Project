@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import './App.css'
+import './TicTacToe.css'
+//import './T_Styling.css'
 
 function Sqaure({value, onSquareClick})
 {  
@@ -98,11 +99,11 @@ export default function TicTacToeGame()
   })
 
   return (
-    <div className="game">
-      <div className="game-board">
+    <div className="T_game">
+      <div className="T_game-board">
         <Board xIsNext = {xIsNext} squares = {currentSquares} onPlay = {handlePlay}/>
       </div>
-      <div className="game-info">
+      <div className="T_game-info">
         <ol>{moves}</ol>
       </div>
     </div>
