@@ -1,5 +1,5 @@
 nav{
-    color:navy;
+    color:black;
     width:100%;
     border-bottom: 2px solid indigo;
 
@@ -13,18 +13,15 @@ nav{
         align-items: center;
     }
 
-    nav > li {
-
-
-    }
-
     nav > a{
         padding:5px;
+        color:black !important;
     }
 
 
 a:hover{
-    color:indigo;
-    text-shadow:1em 0.2em 0.5em goldenrod;
+    color:black;
+    text-shadow:2px 2px 3px hotpink;
     font-size:medium;
 }
+
