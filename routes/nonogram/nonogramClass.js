@@ -95,7 +95,6 @@ export class nonogramClass{
 
     determineWin()
     {
-        let gameFilledCells = 0;
         for(let i = 0; i < this.size; i++)
         {
             for(let j = 0; j < this.size; j++)
@@ -104,16 +103,8 @@ export class nonogramClass{
                 {
                     return false;
                 }
-                if(this.board[i][j] === 1)
-                {
-                    gameFilledCells++;
-                }
             }
         }
-
-        if(gameFilledCells === this.FilledCells)
-        {
-            return true;
-        }
+        return true;
     }
 };
