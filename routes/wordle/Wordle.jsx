@@ -6,7 +6,7 @@ import "./style.css";
 
 const Wordle = () => {
   const [solution] = useState("REACT"); // The word to guess
-  const [guesses, setGuesses] = useState(Array(6).fill("")); // Array of guesses
+  const [guesses, setGuesses] = useState(Array(5).fill("")); // Array of guesses
   const [currentGuess, setCurrentGuess] = useState(""); // Current guess being typed
   const [currentRow, setCurrentRow] = useState(0); // Current row in the grid
   const [gameOver, setGameOver] = useState(false); // Whether the game is over
@@ -38,7 +38,7 @@ const Wordle = () => {
     if (currentGuess === solution) {
       setGameWon(true);
       setGameOver(true);
-    } else if (currentRow === 5) {
+    } else if (currentRow === 4) {
       setGameOver(true);
     } else {
       setCurrentRow((prev) => prev + 1);
