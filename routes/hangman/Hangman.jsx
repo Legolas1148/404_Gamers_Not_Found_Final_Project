@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { hangmanClass } from "./hangmanClass";
+import { useState, useEffect } from "react";
+import { hangmanClass } from "./HangmanClass";
 import SetWord from "./components/SetWord";
 import GameBoard from "./components/GameBoard";
 
@@ -49,10 +49,27 @@ function Hangman() {
     setGameWon(false);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const letter = event.key.toUpperCase();
+      if (/^[A-Z]$/.test(letter)) {
+        handleGuess(letter);
+      }
+    };
+
+    if (isWordSet && !gameOver) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isWordSet, gameOver, guessedLetters, incorrectGuesses]);
+
+
   return (
     <div className="hangman">
       <h1>Two-Player Hangman Game</h1>
-
       {!isWordSet ? (
         <SetWord onSetWord={handleSetWord} />
       ) : (

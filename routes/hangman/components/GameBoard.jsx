@@ -25,7 +25,13 @@ function GameBoard({
       {gameOver && !gameWon && <p>💀 Player 2 lost! The word was: {hangman.wordToGuess}</p>}
 
       {/* Letter buttons */}
-      {!gameOver && <LetterButtons guessedLetters={guessedLetters} incorrectGuesses={incorrectGuesses} onGuess={onGuess} />}
+      {!gameOver && (
+        <LetterButtons
+          guessedLetters={guessedLetters}
+          incorrectGuesses={incorrectGuesses}
+          onGuess={onGuess}
+        />
+      )}
 
       {/* Reset button */}
       {gameOver && <button onClick={onReset}>Play Again</button>}
