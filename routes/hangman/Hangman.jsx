@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { hangmanClass } from "./HangmanClass";
+import { hangmanClass } from "./hangmanClass";
 import SetWord from "./components/SetWord";
 import GameBoard from "./components/GameBoard";
 
