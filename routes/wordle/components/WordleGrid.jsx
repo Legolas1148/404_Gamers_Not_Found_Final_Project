@@ -34,7 +34,7 @@ const WordleGrid = ({ guesses, solution, currentGuess, onKeyPress, onBackspace, 
   return (
     <div id="wordle-grid">
       {guesses.map((guess, rowIndex) => (
-        <React.Fragment key={rowIndex}>
+        <div class= "wordle-row" key={rowIndex}>
           {Array.from({ length: 5 }).map((_, colIndex) => {
             const letter =
               rowIndex === guesses.indexOf("") ? currentGuess[colIndex] || "" : guess[colIndex] || "";
@@ -47,7 +47,7 @@ const WordleGrid = ({ guesses, solution, currentGuess, onKeyPress, onBackspace, 
               </div>
             );
           })}
-        </React.Fragment>
+        </div>
       ))}
     </div>
   );
