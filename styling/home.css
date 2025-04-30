@@ -3,10 +3,11 @@
 }
 .homeContent{
 
-	box-shadow: 3px 2px 4px plum;
+	box-shadow: 3px 2px 4px hotpink;
 }
 h1{
-	text-shadow: 3px 2px 4px plum;
+	color:black;
+	text-shadow: 3px 2px 4px hotpink;
 }
 h3{
 	color:black;
