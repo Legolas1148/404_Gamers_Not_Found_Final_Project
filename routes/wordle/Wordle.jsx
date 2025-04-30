@@ -65,7 +65,8 @@ const Wordle = () => {
       />
       {gameOver && (
         <div className="game-over">
-          {gameWon ? "You Won!" : `Game Over! The word was: ${solution}`}
+                  {gameWon ? "You Won!" : `Game Over! The word was: ${solution}`}
+                  <button onClick={() => window.location.reload()} className="restart-button">Play Again</button>  
         </div>
       )}
     </div>
