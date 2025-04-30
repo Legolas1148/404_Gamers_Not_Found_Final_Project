@@ -67,7 +67,7 @@ function renderCellContent(cell) {
 
 function handleCellClick(rowIndex, cellIndex, gameController, gameState, setGameState) {
   // Create a deep copy of the board
-  const updatedBoard = gameState.gameBoard.map((row) => [...row]);
+  const updatedBoard = gameController.board;
 
   // Update the cell based on the current control
   updatedBoard[rowIndex][cellIndex] = gameState.setControl;
@@ -90,8 +90,8 @@ function handleCellClick(rowIndex, cellIndex, gameController, gameState, setGame
   const gameWon = gameController.determineWin();
 
   // Update the game state
-  setGameState((prevState) => ({
-    ...prevState,
+  setGameState(() => ({
+    ...gameState,
     gameBoard: updatedBoard,
     gameOver: gameWon,
     gameWon: gameWon,

@@ -5,21 +5,21 @@ function GameControls({ gameState, setGameState }) {
                 e.preventDefault();
                 setGameState((prevState) => ({
                     ...prevState,
-                    setControl: 2, // CROSS
+                    setControl: gameState.control.CROSS, // CROSS
                 }));
             }}>X</button>
             <button onClick={(e) => {
                 e.preventDefault();
                 setGameState((prevState) => ({
                     ...prevState,
-                    setControl: 1, // FILL
+                    setControl: gameState.control.FILL, // FILL
                 }));
             }}>Fill</button>
             <button onClick={(e) => {
                 e.preventDefault();
                 setGameState((prevState) => ({
                     ...prevState,
-                    setControl: 0, // CLEAR
+                    setControl: gameState.control.CLEAR, // CLEAR
                 }));
             }}>Clear</button>
             <button onClick={(e) => {

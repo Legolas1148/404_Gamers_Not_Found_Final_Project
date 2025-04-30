@@ -64,9 +64,9 @@
   }
   
   /* Filled cell */
-  .game-cell.filled {
-    background-color: #4caf50;
-    color: #fff;
+  .game-cell {
+    background-color: lightpink;
+    color: #000;
   }
   
   /* Crossed cell */

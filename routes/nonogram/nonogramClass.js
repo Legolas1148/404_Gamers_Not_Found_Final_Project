@@ -69,10 +69,12 @@ export class nonogramClass{
 
     determineFilledRow(row) {
         for (let i = 0; i < this.size; i++) {
-            if (this.board[row][i] === 1) {   
-                if (this.board[row][i] !== this.solutionBoard[row][i]) {
-                    return false;
-                }   
+            if(this.board[row][i] === 1)
+            {
+                continue;
+            }
+            if(this.solutionBoard[row][i] === 1 && this.board[row][i] !== this.solutionBoard[row][i]) { 
+                return false;
             }
         }
         return true;
@@ -80,10 +82,12 @@ export class nonogramClass{
 
     determineFilledCol(col) {
         for (let i = 0; i < this.size; i++) {
-            if( this.board[i][col] === 1) {
-                if (this.board[i][col] !== this.solutionBoard[i][col]) {
-                    return false;
-                }
+            if(this.board[i][col] === 1)
+            {
+                continue;
+            }
+            if(this.solutionBoard[i][col] === 1 && this.board[i][col] !== this.solutionBoard[i][col]) { 
+                return false;
             }
         }
         return true;
