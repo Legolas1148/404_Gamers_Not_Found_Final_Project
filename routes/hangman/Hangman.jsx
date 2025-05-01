@@ -4,23 +4,21 @@ import SetWord from "./components/SetWord";
 import GameBoard from "./components/GameBoard";
 
 function Hangman() {
-  const [hangman, setHangman] = useState(null); // Hangman game instance
-  const [isWordSet, setIsWordSet] = useState(false); // Whether the word has been set
-  const [guessedLetters, setGuessedLetters] = useState([]); // Track guessed letters
-  const [incorrectGuesses, setIncorrectGuesses] = useState([]); // Track incorrect guesses
-  const [gameOver, setGameOver] = useState(false); // Track if the game is over
-  const [gameWon, setGameWon] = useState(false); // Track if the game is won
+  const [hangman, setHangman] = useState(null); 
+  const [isWordSet, setIsWordSet] = useState(false); 
+  const [guessedLetters, setGuessedLetters] = useState([]); 
+  const [incorrectGuesses, setIncorrectGuesses] = useState([]); 
+  const [gameOver, setGameOver] = useState(false); 
+  const [gameWon, setGameWon] = useState(false); 
 
-  // Handle setting the word by Player 1
   const handleSetWord = (word) => {
     setHangman(new hangmanClass(word.trim().toUpperCase()));
     setIsWordSet(true);
   };
 
-  // Handle letter guesses by Player 2
   const handleGuess = (letter) => {
     if (guessedLetters.includes(letter) || incorrectGuesses.includes(letter)) {
-      return; // Ignore if the letter has already been guessed
+      return; 
     }
 
     const result = hangman.guessLetter(letter);
@@ -39,7 +37,7 @@ function Hangman() {
     }
   };
 
-  // Reset the game
+
   const resetGame = () => {
     setHangman(null);
     setIsWordSet(false);
